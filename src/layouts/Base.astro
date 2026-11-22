@@ -1,0 +1,47 @@
+---
+import { withBase } from '../lib/url';
+import { getSite } from '../lib/content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const site = await getSite();
+const pageTitle = title === site.name ? `${site.name} · 함께 자라는 AI 모임` : `${title} · ${site.name}`;
+const summary = description ?? site.description;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={summary} />
+    <meta name="theme-color" content="#21654b" />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={summary} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+  </head>
+  <body>
+    <a class="skip" href="#content">본문으로 건너뛰기</a>
+    {site.showDraftBanner && <p class="draft-banner">{site.draftBanner}</p>}
+    <Header />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

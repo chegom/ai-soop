@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+import { getAbout, getSite } from '../lib/content';
+
+const site = await getSite();
+const about = await getAbout();
+---
+
+<Base title="모임 소개" description={about.lead}>
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">모임 소개</p>
+      <h1>AI와 함께 일하는 사람들이 자라는 곳</h1>
+      <p class="lede">{about.lead}</p>
+      <dl class="stats">
+        {site.stats.map((stat) => (
+          <div><dt>{stat.label}</dt><dd>{stat.value}</dd></div>
+        ))}
+      </dl>
+      <ul class="story-list">
+        {about.story.map((paragraph) => <li>{paragraph}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="people-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="people-title">이런 사람들이 모입니다</h2>
+      </div>
+      <div class="people-grid">
+        {about.people.map((person) => (
+          <article class="person-card">
+            <h3>{person.title}</h3>
+            <p>{person.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="practice-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="practice-title">숲에서 나누는 것</h2>
+      </div>
+      <div class="practice-grid">
+        {about.practices.map((item) => (
+          <article class="practice-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="place-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="place-title">만나는 곳</h2>
+      </div>
+      <div class="location-grid">
+        {about.locations.map((place) => (
+          <article class="location-card">
+            <h3>{place.name}</h3>
+            <p>{place.text}</p>
+          </article>
+        ))}
+      </div>
+      <a class="button button-primary" style="margin-top: 18px" href={withBase('join')}>참가 신청</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,20 @@
+# 참가 후기
+# 이름은 닉네임이나 '예시 참가자'처럼 적고, 연락처는 넣지 마세요.
+
+- id: sample-review-1
+  example: true
+  event: 예시 · 처음 온 사람을 위한 도구 지도
+  quote: 도구를 많이 소개받기보다, 다음 주에 써 볼 것 하나만 정해서 돌아갔습니다.
+  author: 예시 참가자
+
+- id: sample-review-2
+  example: true
+  event: 예시 · 강의, 자료를 다시 읽을 수 있게 정리하기
+  quote: 강의가 끝난 뒤 어디를 다시 보면 되는지 한 장에 남아 있어서 혼자 복습할 수 있었습니다.
+  author: 예시 참가자
+
+- id: sample-review-3
+  example: true
+  event: 예시 · 짧은 기획을 세 가지 형태로
+  quote: 같은 말을 글과 그림으로 바꿔 보니, 내가 빼먹은 조건이 바로 보였습니다.
+  author: 예시 참가자

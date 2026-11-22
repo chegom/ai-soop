@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { isPlaceholder } from '../lib/url';
+import { getSite } from '../lib/content';
+
+const site = await getSite();
+const placeholder = isPlaceholder(site.inquiryFormUrl) || isPlaceholder(site.inquiryEmail);
+---
+
+<Base title="문의" description="강의 의뢰, 제휴, 제품 소개, 강사 등록은 AI 숲이 한 곳에서 받습니다.">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">연락</p>
+      <h1>강의·제휴 문의는 AI 숲으로</h1>
+      <p class="lede">AI 숲이 협업의 창구입니다. 강의 의뢰, 제휴, 제품 소개, 강사 등록은 아래 폼과 메일로만 보내 주세요. 운영자가 받은 뒤 강사와 파트너를 직접 연결합니다.</p>
+      {placeholder && (
+        <div class="placeholder-callout" style="margin-top: 16px" role="note">
+          <strong>예시 주소</strong>
+          <p>{site.inquiryNote} 바꿀 곳은 <code>src/data/site.yaml</code>의 <code>inquiryFormUrl</code>과 <code>inquiryEmail</code>입니다.</p>
+        </div>
+      )}
+      <div class="type-grid" style="margin-top: 18px">
+        {site.inquiryTypes.map((type) => (
+          <article class="type-card">
+            <h2>{type.title}</h2>
+            <p>{type.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="contact-actions">
+        <a class="button button-primary" href={site.inquiryFormUrl} target="_blank" rel="noopener noreferrer">문의 폼 열기</a>
+        <p class="mail-line">메일로 보낼 때 <a href={`mailto:${site.inquiryEmail}`}>{site.inquiryEmail}</a>{placeholder ? ' (예시)' : ''}</p>
+      </div>
+    </div>
+  </section>
+</Base>

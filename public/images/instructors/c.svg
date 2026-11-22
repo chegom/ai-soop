@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144">
+  <rect width="144" height="144" rx="36" fill="#d7f0ea"/>
+  <circle cx="72" cy="80" r="36" fill="#f4efe4"/>
+  <path d="M34 74h76v10c-8 20-22 28-38 28S42 104 34 84z" fill="#67b8b5"/>
+  <circle cx="60" cy="78" r="3" fill="#233c34"/>
+  <circle cx="84" cy="78" r="3" fill="#233c34"/>
+  <path d="M64 92h16" fill="none" stroke="#233c34" stroke-width="3" stroke-linecap="round"/>
+  <text x="72" y="28" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#21654b" font-weight="700">예시</text>
+</svg>

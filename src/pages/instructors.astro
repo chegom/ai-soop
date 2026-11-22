@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import InstructorCard from '../components/InstructorCard.astro';
+import BrokerNote from '../components/BrokerNote.astro';
+import { getInstructors } from '../lib/content';
+
+const instructors = await getInstructors();
+---
+
+<Base title="강사 소개" description="AI 숲 강사의 주제와 짧은 경력입니다. 강의 문의는 AI 숲으로 보내 주세요.">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">강사 소개</p>
+      <h1>숲에서 만나는 강사</h1>
+      <p class="lede">이름, 사진, 강의 주제, 짧은 경력만 둡니다. 개인 메일이나 전화번호, 개인 SNS는 적지 않고, 강사마다 강의 요청 버튼을 두지 않습니다.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <BrokerNote />
+      <div class="card-grid" style="margin-top: 16px">
+        {instructors.map((person) => <InstructorCard {...person.data} />)}
+      </div>
+    </div>
+  </section>
+</Base>

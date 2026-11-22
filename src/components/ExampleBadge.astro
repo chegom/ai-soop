@@ -1,0 +1,5 @@
+---
+interface Props { show?: boolean }
+const { show = true } = Astro.props;
+---
+{show && <span class="pill pill-warn">예시</span>}

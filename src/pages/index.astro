@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import ForestHero from '../components/ForestHero.astro';
+import EventCard from '../components/EventCard.astro';
+import InstructorCard from '../components/InstructorCard.astro';
+import PartnerCard from '../components/PartnerCard.astro';
+import BrokerNote from '../components/BrokerNote.astro';
+import ExampleBadge from '../components/ExampleBadge.astro';
+import { withBase } from '../lib/url';
+import { formatDate, formatPostDate } from '../lib/format';
+import { getEvents, getGallery, getInstructors, getPartners, getPosts, getReviews, getSite } from '../lib/content';
+
+const site = await getSite();
+const { upcoming } = await getEvents();
+const instructors = await getInstructors();
+const partners = await getPartners();
+const posts = (await getPosts()).slice(0, 3);
+const photos = (await getGallery()).slice(0, 3);
+const reviews = (await getReviews()).slice(0, 2);
+---
+
+<Base title={site.name}>
+  <ForestHero />
+  <section class="section" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">일정</p>
+          <h2 id="next-title">다가오는 모임</h2>
+        </div>
+        <a href={withBase('schedule')}>전체 일정</a>
+      </div>
+      <div class="card-grid">
+        {upcoming.slice(0, 3).map((event) => <EventCard {...event.data} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="about-title">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">모임 소개</p>
+        <h2 id="about-title">같이 써 보고, 같이 남깁니다</h2>
+        <p class="lede" style="margin-top: 10px">{site.description}</p>
+        <a class="button button-secondary" style="margin-top: 16px" href={withBase('about')}>모임 이야기</a>
+      </div>
+      <dl class="stats">
+        {site.stats.map((stat) => (
+          <div><dt>{stat.label}</dt><dd>{stat.value}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="instructor-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">강사</p>
+          <h2 id="instructor-title">이번 시안의 강사</h2>
+        </div>
+        <a href={withBase('instructors')}>강사 소개</a>
+      </div>
+      <div class="card-grid">
+        {instructors.map((person) => <InstructorCard {...person.data} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="partner-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">파트너</p>
+          <h2 id="partner-title">제품 소개</h2>
+        </div>
+        <a href={withBase('partners')}>파트너 모두 보기</a>
+      </div>
+      <div class="partner-grid">
+        {partners.map((partner) => <PartnerCard {...partner.data} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="post-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">자료</p>
+          <h2 id="post-title">강의 자료·블로그</h2>
+        </div>
+        <a href={withBase('blog')}>자료 모두 보기</a>
+      </div>
+      <div class="post-grid">
+        {posts.map((post) => (
+          <a class="post-card" href={withBase(`blog/${post.id}`)}>
+            <div class="meta">
+              <ExampleBadge show={post.data.example} />
+              <span class="pill pill-quiet">{formatPostDate(post.data.date)}</span>
+            </div>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">활동</p>
+          <h2 id="gallery-title">지난 활동과 후기</h2>
+        </div>
+        <a href={withBase('gallery')}>사진·후기</a>
+      </div>
+      <div class="gallery-grid">
+        {photos.map((photo) => (
+          <figure class="gallery-card">
+            <img src={withBase(photo.data.image)} alt="" width="640" height="400" />
+            <figcaption>
+              <strong>{photo.data.title}</strong>
+              <span>{formatDate(photo.data.date)}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="card-grid" style="margin-top: 14px">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <ExampleBadge show={review.data.example} />
+            <blockquote>{review.data.quote}</blockquote>
+            <footer>{review.data.author} · {review.data.event}</footer>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <BrokerNote />
+    </div>
+  </section>
+</Base>

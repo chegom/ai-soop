@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#f4f7ee"/>
+  <rect x="0" y="250" width="640" height="150" fill="#e7f0df"/>
+  <rect x="70" y="40" width="220" height="160" rx="16" fill="#d7efe8"/>
+  <circle cx="250" cy="70" r="28" fill="#ffe7a8"/>
+  <rect x="120" y="190" width="400" height="16" rx="6" fill="#c4a27a"/>
+  <rect x="150" y="206" width="12" height="70" fill="#916441"/>
+  <rect x="470" y="206" width="12" height="70" fill="#916441"/>
+  <g fill="#f6ead8">
+    <circle cx="180" cy="168" r="18"/>
+    <circle cx="250" cy="160" r="18"/>
+    <circle cx="330" cy="168" r="18"/>
+    <circle cx="410" cy="158" r="18"/>
+  </g>
+  <g fill="#21654b">
+    <path d="M160 186h40v28h-40z"/>
+    <path d="M232 178h36v36h-36z"/>
+    <path d="M312 186h36v28h-36z"/>
+    <path d="M392 176h36v34h-36z"/>
+  </g>
+  <text x="32" y="36" font-size="18" font-family="sans-serif" fill="#21654b" font-weight="700">예시 사진</text>
+</svg>

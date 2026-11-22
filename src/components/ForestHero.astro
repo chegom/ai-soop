@@ -1,0 +1,269 @@
+---
+import { withBase } from '../lib/url';
+import '../styles/forest.css';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="forest forest-desktop" data-forest aria-hidden="true">
+    <div class="layer" data-depth="0.04">
+      <svg viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d7f0ea" />
+            <stop offset="52%" stop-color="#f4f6e4" />
+            <stop offset="100%" stop-color="#f8e6c2" />
+          </linearGradient>
+        </defs>
+        <rect width="1600" height="720" fill="url(#skyGrad)" />
+        <circle cx="1240" cy="132" r="46" fill="#ffe7a8" />
+        <circle cx="1240" cy="132" r="86" fill="#ffe7a8" opacity="0.35" />
+        <path d="M180 150c18-16 28-8 36 6" fill="none" stroke="#6ea38a" stroke-width="3" stroke-linecap="round" />
+        <path d="M210 128c16-14 26-6 32 8" fill="none" stroke="#6ea38a" stroke-width="3" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div class="layer" data-depth="0.12">
+      <svg viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+        <g fill="#fff" opacity="0.9">
+          <ellipse cx="260" cy="120" rx="54" ry="22" />
+          <ellipse cx="300" cy="112" rx="36" ry="18" />
+          <ellipse cx="230" cy="116" rx="28" ry="16" />
+          <ellipse cx="980" cy="86" rx="62" ry="22" />
+          <ellipse cx="1030" cy="78" rx="34" ry="16" />
+          <ellipse cx="620" cy="70" rx="40" ry="16" />
+        </g>
+      </svg>
+    </div>
+    <div class="layer" data-depth="0.2">
+      <svg viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+        <path d="M0 430C180 390 340 460 520 420C740 370 900 450 1120 400C1320 360 1480 420 1600 390V720H0Z" fill="#d9e7cc" />
+        <path d="M0 500C220 460 420 530 680 490C960 440 1180 520 1600 470V720H0Z" fill="#c5d9ab" />
+        <g fill="#8fb57c">
+          <ellipse cx="120" cy="455" rx="18" ry="28" />
+          <ellipse cx="168" cy="468" rx="14" ry="20" />
+          <ellipse cx="390" cy="430" rx="16" ry="24" />
+          <ellipse cx="450" cy="448" rx="22" ry="30" />
+          <ellipse cx="760" cy="418" rx="15" ry="22" />
+          <ellipse cx="1320" cy="400" rx="20" ry="28" />
+          <ellipse cx="1390" cy="418" rx="14" ry="20" />
+          <ellipse cx="1488" cy="408" rx="18" ry="26" />
+        </g>
+      </svg>
+    </div>
+    <div class="layer" data-depth="0.34">
+      <svg viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+        <g transform="translate(470 250)">
+          <rect x="34" y="150" width="12" height="78" rx="5" fill="#dfe8d8" />
+          <rect x="36" y="168" width="8" height="3" fill="#b7c7ae" />
+          <rect x="36" y="186" width="8" height="3" fill="#b7c7ae" />
+          <ellipse cx="40" cy="92" rx="46" ry="40" fill="#c9e3a4" />
+          <ellipse cx="18" cy="112" rx="28" ry="24" fill="#d7ebba" />
+          <ellipse cx="22" cy="86" rx="6" ry="7" fill="#fff" />
+          <ellipse cx="42" cy="84" rx="6" ry="7" fill="#fff" />
+          <circle cx="23" cy="88" r="2.2" fill="#233c34" />
+          <circle cx="43" cy="86" r="2.2" fill="#233c34" />
+        </g>
+        <g transform="translate(700 280)">
+          <rect x="46" y="130" width="14" height="70" rx="5" fill="#8d6244" />
+          <polygon points="54,18 96,78 12,78" fill="#1f5c42" />
+          <polygon points="54,52 104,118 4,118" fill="#277256" />
+          <polygon points="54,88 112,156 -4,156" fill="#1c4e38" />
+        </g>
+        <g transform="translate(860 300)">
+          <rect x="18" y="92" width="7" height="46" rx="3" fill="#6e4e34" />
+          <rect x="78" y="92" width="7" height="46" rx="3" fill="#6e4e34" />
+          <rect x="8" y="84" width="88" height="12" rx="4" fill="#c4a27a" />
+          <rect x="22" y="46" width="62" height="42" rx="6" fill="#fff6e4" />
+          <polygon points="14,50 53,18 92,50" fill="#21654b" />
+          <rect x="44" y="64" width="14" height="24" rx="2" fill="#8d6244" />
+          <circle cx="36" cy="62" r="5" fill="#d7efe4" />
+        </g>
+        <g transform="translate(1080 250)" class="forest-detail">
+          <rect x="48" y="150" width="14" height="64" rx="5" fill="#916441" />
+          <ellipse cx="56" cy="108" rx="50" ry="22" fill="#e2c15e" />
+          <ellipse cx="30" cy="124" rx="34" ry="18" fill="#efd48a" />
+          <ellipse cx="84" cy="122" rx="32" ry="18" fill="#d7b04a" />
+          <ellipse cx="38" cy="100" rx="5" ry="6" fill="#fff" />
+          <ellipse cx="62" cy="98" rx="5" ry="6" fill="#fff" />
+          <circle cx="39" cy="102" r="2" fill="#233c34" />
+          <circle cx="63" cy="100" r="2" fill="#233c34" />
+        </g>
+        <g transform="translate(980 330)">
+          <rect x="22" y="78" width="10" height="42" rx="4" fill="#8d6244" />
+          <ellipse cx="27" cy="52" rx="30" ry="26" fill="#3e8f62" />
+          <ellipse cx="12" cy="64" rx="16" ry="14" fill="#67a86a" />
+          <circle cx="20" cy="50" r="2.2" fill="#233c34" />
+          <circle cx="34" cy="50" r="2.2" fill="#233c34" />
+        </g>
+        <path d="M560 500C760 450 900 530 1120 480C1280 446 1400 490 1560 460" fill="none" stroke="#f6edd4" stroke-width="16" stroke-linecap="round" />
+        <g transform="translate(1260 300)">
+          <path d="M40 170C70 120 78 80 70 20" fill="none" stroke="#6d8f62" stroke-width="8" stroke-linecap="round" />
+          <path d="M70 70C110 90 130 130 120 170" fill="none" stroke="#7ea36e" stroke-width="4" stroke-linecap="round" />
+          <path d="M66 96C20 110 8 150 24 176" fill="none" stroke="#7ea36e" stroke-width="4" stroke-linecap="round" />
+          <path d="M72 48C108 40 130 70 124 100" fill="none" stroke="#95b884" stroke-width="3" stroke-linecap="round" />
+        </g>
+        <g transform="translate(1468 280)">
+          <rect x="24" y="120" width="26" height="86" rx="4" fill="#f7f1e4" />
+          <polygon points="16,122 37,92 58,122" fill="#21654b" />
+          <rect x="30" y="98" width="14" height="18" rx="2" fill="#ffe7a8" />
+          <rect x="30" y="142" width="14" height="12" rx="2" fill="#67b8b5" />
+          <rect x="30" y="164" width="14" height="12" rx="2" fill="#8ecfc4" />
+        </g>
+      </svg>
+    </div>
+    <div class="layer" data-depth="0.46">
+      <svg viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+        <path d="M0 560C180 530 320 600 560 552C820 500 980 590 1240 540C1420 510 1520 560 1600 548V640C1400 680 1180 600 920 650C680 690 360 610 0 656Z" fill="#67b8b5" />
+        <path d="M40 574C200 552 340 604 560 568C780 532 1000 596 1240 556" fill="none" stroke="#e7f7f4" stroke-width="6" stroke-linecap="round" opacity="0.8" />
+        <g transform="translate(1040 528)" class="forest-detail">
+          <path d="M10 24C28 8 70 8 88 24L74 32H24Z" fill="#fff6e4" />
+          <path d="M24 24V10h8l10 14" fill="none" stroke="#21654b" stroke-width="3" />
+          <path d="M46 12c16 2 22 14 10 18" fill="#e7f6df" stroke="#21654b" stroke-width="2" />
+        </g>
+        <g class="forest-detail" fill="#f4fbfa">
+          <ellipse cx="760" cy="575" rx="10" ry="4" />
+          <ellipse cx="790" cy="568" rx="8" ry="3" />
+        </g>
+      </svg>
+    </div>
+    <div class="layer" data-depth="0.7">
+      <svg viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+        <path d="M180 470C260 430 300 520 390 560C300 590 230 560 180 590Z" fill="#f3e6c4" opacity="0.95" />
+        <g transform="translate(-10 250)">
+          <rect x="70" y="210" width="22" height="120" rx="8" fill="#7a5438" />
+          <ellipse cx="82" cy="150" rx="78" ry="64" fill="#2f7a52" />
+          <ellipse cx="36" cy="186" rx="48" ry="40" fill="#3d8b60" />
+          <ellipse cx="124" cy="180" rx="46" ry="38" fill="#21654b" />
+          <ellipse cx="58" cy="146" rx="8" ry="9" fill="#fff" />
+          <ellipse cx="96" cy="142" rx="8" ry="9" fill="#fff" />
+          <circle cx="60" cy="148" r="3" fill="#233c34" />
+          <circle cx="98" cy="144" r="3" fill="#233c34" />
+          <path d="M68 166q14 10 28 0" fill="none" stroke="#233c34" stroke-width="3" stroke-linecap="round" />
+        </g>
+        <g transform="translate(1360 340)">
+          <rect x="36" y="120" width="14" height="70" rx="5" fill="#916441" />
+          <ellipse cx="43" cy="86" rx="40" ry="34" fill="#2f6a4c" />
+          <ellipse cx="24" cy="104" rx="22" ry="18" fill="#3f7d58" />
+          <circle cx="32" cy="82" r="2.4" fill="#fff" />
+          <circle cx="50" cy="80" r="2.4" fill="#fff" />
+          <circle cx="33" cy="83" r="1.2" fill="#233c34" />
+          <circle cx="51" cy="81" r="1.2" fill="#233c34" />
+        </g>
+        <g transform="translate(250 600)" class="forest-detail">
+          <ellipse cx="24" cy="8" rx="6" ry="16" fill="#f6ead8" />
+          <ellipse cx="40" cy="10" rx="6" ry="14" fill="#f6ead8" />
+          <ellipse cx="26" cy="14" rx="3" ry="8" fill="#f0c6c0" />
+          <ellipse cx="34" cy="30" rx="20" ry="14" fill="#f6ead8" />
+          <circle cx="26" cy="26" r="2" fill="#233c34" />
+          <circle cx="40" cy="26" r="2" fill="#233c34" />
+        </g>
+        <g fill="#e7f0c8">
+          <ellipse cx="0" cy="690" rx="280" ry="46" />
+          <ellipse cx="520" cy="700" rx="360" ry="40" />
+          <ellipse cx="1100" cy="688" rx="300" ry="42" />
+          <ellipse cx="1560" cy="700" rx="220" ry="40" />
+        </g>
+        <g class="forest-detail">
+          <circle cx="430" cy="650" r="6" fill="#f2c1c8" />
+          <circle cx="448" cy="656" r="5" fill="#fff1d1" />
+          <circle cx="1180" cy="646" r="6" fill="#f2c1c8" />
+          <circle cx="1200" cy="654" r="5" fill="#ffe08a" />
+          <rect x="900" y="600" width="6" height="36" rx="2" fill="#916441" />
+          <rect x="876" y="578" width="64" height="26" rx="6" fill="#fff6e4" stroke="#21654b" />
+          <text x="908" y="596" text-anchor="middle" font-size="13" font-weight="700" fill="#21654b" font-family="DM Sans, Noto Sans KR, sans-serif">AI 숲</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="forest forest-mobile" aria-hidden="true">
+    <svg viewBox="0 0 390 160" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="mSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d7f0ea" />
+          <stop offset="100%" stop-color="#f8e6c2" />
+        </linearGradient>
+      </defs>
+      <rect width="390" height="160" fill="url(#mSky)" />
+      <circle cx="320" cy="36" r="16" fill="#ffe7a8" />
+      <path d="M0 96C70 78 120 110 190 92C260 74 300 104 390 88V160H0Z" fill="#c5d9ab" />
+      <g transform="translate(28 36)">
+        <rect x="28" y="62" width="8" height="36" rx="3" fill="#7a5438" />
+        <ellipse cx="32" cy="40" rx="28" ry="24" fill="#2f7a52" />
+        <circle cx="24" cy="38" r="2" fill="#233c34" />
+        <circle cx="38" cy="36" r="2" fill="#233c34" />
+      </g>
+      <g transform="translate(150 28)">
+        <rect x="22" y="70" width="6" height="34" rx="2" fill="#8d6244" />
+        <polygon points="26,18 48,52 4,52" fill="#1f5c42" />
+        <polygon points="26,40 54,78 -2,78" fill="#21654b" />
+      </g>
+      <g transform="translate(230 58)">
+        <rect x="8" y="28" width="36" height="22" rx="4" fill="#fff6e4" />
+        <polygon points="4,30 26,12 48,30" fill="#21654b" />
+        <rect x="20" y="36" width="8" height="14" fill="#8d6244" />
+      </g>
+      <ellipse cx="70" cy="148" rx="90" ry="16" fill="#7ea86a" />
+      <ellipse cx="250" cy="150" rx="120" ry="16" fill="#6f9a5c" />
+    </svg>
+  </div>
+
+  <div class="hero-copy">
+    <p class="eyebrow">온라인 · 오프라인 AI 모임</p>
+    <h1 id="hero-title">서로 다른 사람들이<br />함께 자라는 <em>숲</em></h1>
+    <p class="lede">개발부터 디자인, 기획, 창작까지. AI를 일과 창작에 연결해 보고 싶은 사람들이 모입니다.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href={withBase('schedule')}>다음 모임 보기</a>
+      <a class="button button-secondary" href={withBase('join')}>참가 신청</a>
+    </div>
+    <p class="hero-rule">강의·제휴 문의는 AI 숲으로</p>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector('[data-forest]');
+  if (root) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const narrow = window.matchMedia('(max-width: 760px)');
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const layers = [...root.querySelectorAll<HTMLElement>('[data-depth]')];
+    let pointerX = 0;
+    let pointerY = 0;
+    let frame = 0;
+
+    const enabled = () => !reduce.matches && !narrow.matches && fine.matches;
+
+    const paint = () => {
+      frame = 0;
+      if (!enabled()) {
+        for (const layer of layers) layer.style.transform = '';
+        return;
+      }
+      const rect = root.getBoundingClientRect();
+      const scroll = Math.max(-0.2, Math.min(1.2, -rect.top / Math.max(rect.height, 1)));
+      for (const layer of layers) {
+        const depth = Number(layer.dataset.depth);
+        const x = pointerX * depth * 28;
+        const y = pointerY * depth * 14 + scroll * depth * 46;
+        layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
+    };
+
+    const request = () => {
+      if (!frame) frame = requestAnimationFrame(paint);
+    };
+
+    root.parentElement?.addEventListener('pointermove', (event) => {
+      if (!enabled()) return;
+      const rect = root.getBoundingClientRect();
+      pointerX = (event.clientX - rect.left) / rect.width - 0.5;
+      pointerY = (event.clientY - rect.top) / rect.height - 0.5;
+      request();
+    });
+
+    window.addEventListener('scroll', request, { passive: true });
+    reduce.addEventListener('change', request);
+    narrow.addEventListener('change', request);
+    fine.addEventListener('change', request);
+    request();
+  }
+</script>

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import EventCard from '../components/EventCard.astro';
+import { withBase } from '../lib/url';
+import { formatMonth } from '../lib/format';
+import { getEvents } from '../lib/content';
+
+const { upcoming, past } = await getEvents();
+
+function groupByMonth(events: typeof upcoming) {
+  const groups = new Map<string, typeof upcoming>();
+  for (const event of events) {
+    const key = event.data.date.slice(0, 7);
+    const list = groups.get(key) ?? [];
+    list.push(event);
+    groups.set(key, list);
+  }
+  return [...groups.entries()];
+}
+---
+
+<Base title="모임·강의 일정" description="AI 숲의 온라인·오프라인 모임과 강의 일정입니다.">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">일정</p>
+      <h1>모임·강의 일정</h1>
+      <p class="lede">예정된 자리와 지난 자리를 한 목록으로 둡니다. 참가는 신청 페이지의 폼으로 이어지고, 강의 의뢰는 일정 카드가 아니라 AI 숲 문의로 받습니다.</p>
+      <a class="button button-primary" style="margin-top: 16px" href={withBase('join')}>참가 신청</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="upcoming-title">
+    <div class="wrap">
+      <h2 id="upcoming-title">예정</h2>
+      {groupByMonth(upcoming).map(([month, events]) => (
+        <div class="month-block">
+          <h3>{formatMonth(`${month}-01`)}</h3>
+          <div class="stack">
+            {events.map((event) => <EventCard {...event.data} />)}
+          </div>
+        </div>
+      ))}
+      {upcoming.length === 0 && <p class="lede">예정된 모임이 없습니다. src/data/events.yaml 에 일정을 추가하세요.</p>}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="past-title">
+    <div class="wrap">
+      <h2 id="past-title">지난 일정</h2>
+      <div class="stack" style="margin-top: 12px">
+        {past.map((event) => <EventCard {...event.data} />)}
+      </div>
+    </div>
+  </section>
+</Base>
