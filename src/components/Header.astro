@@ -3,6 +3,8 @@ import { withBase } from '../lib/url';
 
 const items = [
   { href: 'about', label: '소개' },
+  { href: 'meetups', label: '모임' },
+  { href: 'lectures', label: '강의' },
   { href: 'gallery', label: '활동' },
   { href: 'blog', label: '자료' },
   { href: 'partners', label: '파트너' },
@@ -33,7 +35,8 @@ function currentAttr(href: string) {
       {items.map((item) => (
         <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
       ))}
-      <a class="button button-primary header-join" href={withBase('join')}>참가 신청</a>
+      <a class="button button-secondary header-join" href={withBase('join')}>참가 신청</a>
+      <a class="button button-primary header-inquiry" href={withBase('contact')}>강의·제휴 문의</a>
     </nav>
     <details class="mobile-nav">
       <summary>메뉴</summary>
@@ -42,6 +45,7 @@ function currentAttr(href: string) {
           <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
         ))}
         <a href={withBase('join')}>참가 신청</a>
+        <a href={withBase('contact')}>강의·제휴 문의</a>
       </div>
     </details>
   </header>

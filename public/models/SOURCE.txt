@@ -1,0 +1,10 @@
+European Beech
+Source: https://tevy.dev/models/european-beech
+Pinned file: https://tevy.dev/models/european-beech/v1/lod0.glb
+Version: v1 (2026-10-26)
+License: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+
+The file is already meshopt- and KTX2-compressed by the author.
+three.js (MIT) decodes it in the browser. The Basis transcoder in public/basis
+comes from the three.js package so GitHub Pages does not need an extra CDN.

@@ -5,39 +5,55 @@
   min-height: clamp(520px, 68vh, 700px);
   padding: 48px 0 56px;
   overflow: hidden;
-  background:
-    radial-gradient(720px 480px at 74% 42%, rgba(216, 230, 214, 0.85), transparent 70%),
-    linear-gradient(180deg, #f7f6f2 0%, #f3f4ef 100%);
+  background: #f6f5f1;
 }
 
-.forest {
+.tree-stage {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(64%, 820px);
-  pointer-events: none;
+  inset: 0;
 }
 
-.forest svg {
+.tree-canvas,
+.tree-still {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  display: block;
-  overflow: visible;
+  object-fit: cover;
+  object-position: 72% center;
 }
+
+.tree-canvas { display: block; }
+.tree-canvas[hidden],
+.tree-still[hidden] { display: none; }
 
 .hero-fade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #f6f5f1 0%, #f6f5f1 32%, rgba(246, 245, 241, 0.78) 46%, rgba(246, 245, 241, 0) 64%);
+  background: linear-gradient(90deg, #f6f5f1 0%, #f6f5f1 16%, rgba(246, 245, 241, 0.94) 32%, rgba(246, 245, 241, 0.7) 44%, rgba(246, 245, 241, 0) 58%);
   pointer-events: none;
 }
 
 .hero-copy {
   position: relative;
   z-index: 1;
-  max-width: 640px;
+  max-width: 560px;
   padding-bottom: 8px;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -28px -120px -20px -80px;
+  background: radial-gradient(ellipse at 18% 46%, rgba(246, 245, 241, 0.94) 0%, rgba(246, 245, 241, 0.72) 46%, rgba(246, 245, 241, 0) 74%);
+  filter: blur(6px);
+}
+
+.hero .eyebrow,
+.hero h1,
+.hero .lede {
+  text-shadow: 0 0 18px #f6f5f1, 0 0 28px #f6f5f1;
 }
 
 .hero h1 {
@@ -50,25 +66,10 @@
 
 .hero .lede {
   margin-top: 18px;
-  max-width: 28rem;
+  max-width: 26rem;
   font-size: 17px;
   line-height: 1.7;
-}
-
-.node { opacity: 0.78; }
-
-@media (prefers-reduced-motion: no-preference) and (min-width: 761px) and (hover: hover) and (pointer: fine) {
-  .node {
-    animation: node-glow 6.4s ease-in-out infinite;
-  }
-  .node:nth-child(3n) { animation-delay: -2.1s; }
-  .node:nth-child(3n + 1) { animation-delay: -4.2s; }
-  .node-major { animation-duration: 5.2s; }
-}
-
-@keyframes node-glow {
-  0%, 100% { opacity: 0.28; }
-  50% { opacity: 1; }
+  color: #2a3832;
 }
 
 @media (max-width: 760px) {
@@ -79,21 +80,13 @@
     justify-content: flex-start;
     padding: 0 0 8px;
   }
-  .forest {
+  .tree-stage {
     position: relative;
-    width: 100%;
-    height: 300px;
-    right: auto;
-    top: auto;
-    bottom: auto;
+    height: 280px;
   }
   .hero-fade { display: none; }
-  .hero-copy { max-width: none; padding-top: 4px; padding-bottom: 12px; }
+  .hero-copy { max-width: none; padding-top: 8px; padding-bottom: 12px; }
   .hero h1 { font-size: 36px; }
   .hero .lede { font-size: 16px; }
-  .hero-actions { margin-top: 20px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .node { animation: none; opacity: 0.78; }
+  .tree-still { object-position: 68% 22%; }
 }
