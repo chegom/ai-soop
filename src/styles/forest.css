@@ -1,95 +1,99 @@
 .hero {
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
   display: flex;
-  align-items: center;
-  min-height: 60vh;
-  padding: 28px max(20px, 5vw) 40px;
+  align-items: flex-end;
+  min-height: clamp(520px, 68vh, 700px);
+  padding: 48px 0 56px;
+  overflow: hidden;
+  background:
+    radial-gradient(720px 480px at 74% 42%, rgba(216, 230, 214, 0.85), transparent 70%),
+    linear-gradient(180deg, #f7f6f2 0%, #f3f4ef 100%);
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 56px;
-  background: linear-gradient(transparent, var(--paper));
-  z-index: 1;
-  pointer-events: none;
-}
+
 .forest {
   position: absolute;
-  inset: 0;
-  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(64%, 820px);
   pointer-events: none;
 }
-.forest-mobile { display: none; }
-.layer {
-  position: absolute;
-  left: -12%;
-  top: -10%;
-  width: 124%;
-  height: 124%;
-}
-.layer svg {
+
+.forest svg {
   width: 100%;
   height: 100%;
   display: block;
+  overflow: visible;
 }
+
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #f6f5f1 0%, #f6f5f1 32%, rgba(246, 245, 241, 0.78) 46%, rgba(246, 245, 241, 0) 64%);
+  pointer-events: none;
+}
+
 .hero-copy {
   position: relative;
-  z-index: 2;
-  width: min(440px, 100%);
-  padding: 22px 22px 18px;
-  border-radius: 22px;
-  background: rgba(255, 248, 239, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 16px 40px rgba(35, 60, 52, 0.1);
+  z-index: 1;
+  max-width: 640px;
+  padding-bottom: 8px;
 }
-.hero-copy h1 {
-  margin: 8px 0 10px;
-  font-size: clamp(32px, 4vw, 46px);
-  line-height: 1.28;
-  letter-spacing: -0.05em;
-  font-weight: 800;
+
+.hero h1 {
+  margin-top: 14px;
+  font-size: clamp(44px, 5.2vw, 68px);
+  font-weight: 650;
+  letter-spacing: -0.048em;
+  line-height: 1.16;
 }
-.hero-copy h1 em {
-  font-style: normal;
-  color: var(--green);
+
+.hero .lede {
+  margin-top: 18px;
+  max-width: 28rem;
+  font-size: 17px;
+  line-height: 1.7;
 }
-.hero-copy .lede { font-size: 15px; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.hero-rule {
-  margin-top: 12px;
-  font-size: 13px;
-  font-weight: 750;
-  color: var(--green-deep);
+
+.node { opacity: 0.78; }
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 761px) and (hover: hover) and (pointer: fine) {
+  .node {
+    animation: node-glow 6.4s ease-in-out infinite;
+  }
+  .node:nth-child(3n) { animation-delay: -2.1s; }
+  .node:nth-child(3n + 1) { animation-delay: -4.2s; }
+  .node-major { animation-duration: 5.2s; }
+}
+
+@keyframes node-glow {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 1; }
 }
 
 @media (max-width: 760px) {
   .hero {
-    display: block;
     min-height: 0;
-    padding: 0 0 4px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0 0 8px;
   }
-  .hero::after { display: none; }
-  .forest-desktop { display: none; }
-  .forest-mobile {
-    display: block;
+  .forest {
     position: relative;
-    height: 132px;
+    width: 100%;
+    height: 300px;
+    right: auto;
+    top: auto;
+    bottom: auto;
   }
-  .forest-mobile svg { width: 100%; height: 100%; display: block; }
-  .hero-copy {
-    width: auto;
-    margin: -28px 14px 0;
-    padding: 16px 16px 14px;
-  }
-  .hero-copy h1 { font-size: 30px; }
-  .hero-actions .button { flex: 1 1 140px; }
+  .hero-fade { display: none; }
+  .hero-copy { max-width: none; padding-top: 4px; padding-bottom: 12px; }
+  .hero h1 { font-size: 36px; }
+  .hero .lede { font-size: 16px; }
+  .hero-actions { margin-top: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .layer { transform: none !important; }
+  .node { animation: none; opacity: 0.78; }
 }

@@ -17,8 +17,16 @@ const partners = await getPartners();
   </section>
   <section class="section">
     <div class="wrap">
+      <ul class="logo-row">
+        {partners.map((partner) => (
+          <li>
+            <strong>{partner.data.company}</strong>
+            <span>{partner.data.product}{partner.data.example ? ' · 예시' : ''}</span>
+          </li>
+        ))}
+      </ul>
       <BrokerNote />
-      <div class="partner-grid" style="margin-top: 16px">
+      <div class="partner-grid" style="margin-top: 28px">
         {partners.map((partner) => <PartnerCard {...partner.data} />)}
       </div>
     </div>

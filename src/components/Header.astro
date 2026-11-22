@@ -3,12 +3,9 @@ import { withBase } from '../lib/url';
 
 const items = [
   { href: 'about', label: '소개' },
-  { href: 'schedule', label: '일정' },
-  { href: 'instructors', label: '강사' },
-  { href: 'partners', label: '파트너' },
-  { href: 'blog', label: '자료' },
   { href: 'gallery', label: '활동' },
-  { href: 'contact', label: '문의' },
+  { href: 'blog', label: '자료' },
+  { href: 'partners', label: '파트너' },
 ];
 
 function normalize(path: string) {
@@ -26,24 +23,26 @@ function currentAttr(href: string) {
 }
 ---
 
-<header class="site-header">
-  <a class="brand" href={withBase('')} aria-current={current === home ? 'page' : undefined}>
-    <img src={withBase('favicon.svg')} alt="" width="34" height="34" />
-    AI 숲
-  </a>
-  <nav class="desktop-nav" aria-label="주요 메뉴">
-    {items.map((item) => (
-      <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
-    ))}
-    <a class="button button-primary header-join" href={withBase('join')}>참가 신청</a>
-  </nav>
-  <details class="mobile-nav">
-    <summary>메뉴</summary>
-    <div class="mobile-nav-panel" role="navigation" aria-label="모바일 메뉴">
+<div class="header-bar">
+  <header class="site-header">
+    <a class="brand" href={withBase('')} aria-current={current === home ? 'page' : undefined}>
+      <img src={withBase('favicon.svg')} alt="" width="28" height="28" />
+      AI 숲
+    </a>
+    <nav class="desktop-nav" aria-label="주요 메뉴">
       {items.map((item) => (
         <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
       ))}
-      <a href={withBase('join')}>참가 신청</a>
-    </div>
-  </details>
-</header>
+      <a class="button button-primary header-join" href={withBase('join')}>참가 신청</a>
+    </nav>
+    <details class="mobile-nav">
+      <summary>메뉴</summary>
+      <div class="mobile-nav-panel" role="navigation" aria-label="모바일 메뉴">
+        {items.map((item) => (
+          <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
+        ))}
+        <a href={withBase('join')}>참가 신청</a>
+      </div>
+    </details>
+  </header>
+</div>

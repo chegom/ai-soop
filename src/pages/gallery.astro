@@ -9,20 +9,20 @@ const photos = await getGallery();
 const reviews = await getReviews();
 ---
 
-<Base title="지난 활동" description="AI 숲의 활동 사진과 참가 후기입니다.">
+<Base title="활동" description="AI 숲의 지난 모임 사진과 참가 후기입니다.">
   <section class="page-intro">
     <div class="wrap">
       <p class="eyebrow">활동</p>
-      <h1>지난 활동 사진·후기</h1>
+      <h1>지난 모임</h1>
       <p class="lede">사진과 후기는 예시입니다. 실제 사진 파일을 <code>public/images/gallery/</code>에 넣고 <code>src/data/gallery.yaml</code>의 경로만 바꾸면 됩니다.</p>
     </div>
   </section>
   <section class="section" aria-labelledby="photo-title">
     <div class="wrap">
       <h2 id="photo-title">사진</h2>
-      <div class="gallery-grid" style="margin-top: 12px">
+      <div class="memory-grid" style="margin-top: 20px">
         {photos.map((photo) => (
-          <figure class="gallery-card">
+          <figure class="memory-card">
             <img src={withBase(photo.data.image)} alt={photo.data.caption} width="640" height="400" />
             <figcaption>
               <ExampleBadge show={photo.data.example} />

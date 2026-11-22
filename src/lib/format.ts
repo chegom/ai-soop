@@ -1,3 +1,5 @@
+const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+
 export function formatDate(iso: string) {
   const [year, month, day] = iso.split('-');
   return `${year}년 ${Number(month)}월 ${Number(day)}일`;
@@ -6,6 +8,12 @@ export function formatDate(iso: string) {
 export function formatMonth(iso: string) {
   const [year, month] = iso.split('-');
   return `${year}년 ${Number(month)}월`;
+}
+
+export function dateParts(iso: string) {
+  const [year, month, day] = iso.split('-').map(Number);
+  const weekday = WEEKDAYS[new Date(Date.UTC(year, month - 1, day)).getUTCDay()];
+  return { year, month, day, weekday };
 }
 
 export function formatPostDate(date: Date) {

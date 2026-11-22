@@ -1,54 +1,131 @@
 ---
 import Base from '../layouts/Base.astro';
 import ForestHero from '../components/ForestHero.astro';
-import EventCard from '../components/EventCard.astro';
 import InstructorCard from '../components/InstructorCard.astro';
-import PartnerCard from '../components/PartnerCard.astro';
-import BrokerNote from '../components/BrokerNote.astro';
 import ExampleBadge from '../components/ExampleBadge.astro';
 import { withBase } from '../lib/url';
-import { formatDate, formatPostDate } from '../lib/format';
-import { getEvents, getGallery, getInstructors, getPartners, getPosts, getReviews, getSite } from '../lib/content';
+import { dateParts, formatDate, formatPostDate } from '../lib/format';
+import { getAbout, getEvents, getGallery, getInstructors, getPartners, getPosts, getSite } from '../lib/content';
 
 const site = await getSite();
+const about = await getAbout();
 const { upcoming } = await getEvents();
+const next = upcoming[0];
+const when = next ? dateParts(next.data.date) : null;
 const instructors = await getInstructors();
 const partners = await getPartners();
 const posts = (await getPosts()).slice(0, 3);
 const photos = (await getGallery()).slice(0, 3);
-const reviews = (await getReviews()).slice(0, 2);
 ---
 
 <Base title={site.name}>
   <ForestHero />
-  <section class="section" aria-labelledby="next-title">
+
+  <section class="next-band" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="next-title">다음 모임</h2>
+        <a href={withBase('schedule')}>전체 일정</a>
+      </div>
+      {next && when ? (
+        <article class="next-card">
+          <div class="next-date">
+            <span>{when.month}월</span>
+            <strong>{when.day}</strong>
+            <span>{when.weekday}요일</span>
+          </div>
+          <div class="next-main">
+            <p class="next-kicker">
+              <ExampleBadge show={next.data.example} />
+              <span>{next.data.kind}</span>
+              <span>{next.data.mode}</span>
+            </p>
+            <h3>{next.data.title}</h3>
+            <p class="next-meta">{next.data.time} · {next.data.place}</p>
+            <p>{next.data.summary}</p>
+          </div>
+          <div class="next-actions">
+            <a class="button button-primary" href={withBase('join')}>참가 신청</a>
+          </div>
+        </article>
+      ) : (
+        <article class="next-card next-card-empty">
+          <div class="next-main">
+            <h3>예정된 모임이 없습니다</h3>
+            <p>일정에 지난 자리가 남아 있습니다.</p>
+          </div>
+          <a class="button button-secondary" href={withBase('schedule')}>일정 보기</a>
+        </article>
+      )}
+      <dl class="record">
+        {site.stats.map((stat) => (
+          <div>
+            <dt>{stat.label}</dt>
+            <dd>{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="memory-title">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow">일정</p>
-          <h2 id="next-title">다가오는 모임</h2>
+          <p class="eyebrow">지난 모임</p>
+          <h2 id="memory-title">가까이에서 본 자리</h2>
         </div>
-        <a href={withBase('schedule')}>전체 일정</a>
+        <a href={withBase('gallery')}>활동 모두 보기</a>
       </div>
-      <div class="card-grid">
-        {upcoming.slice(0, 3).map((event) => <EventCard {...event.data} />)}
+      <p class="lede section-lede">큰 단체 사진 대신, 테이블과 노트처럼 가까운 장면 두세 장으로 시작합니다. 파일을 더하면 같은 칸이 늘어납니다.</p>
+      <div class="memory-grid">
+        {photos.map((photo) => (
+          <figure class="memory-card">
+            <img src={withBase(photo.data.image)} alt={photo.data.caption} width="800" height="1000" />
+            <figcaption>
+              <ExampleBadge show={photo.data.example} />
+              <strong>{photo.data.title}</strong>
+              <span>{formatDate(photo.data.date)} · {photo.data.caption}</span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="about-title">
-    <div class="wrap split">
-      <div>
-        <p class="eyebrow">모임 소개</p>
-        <h2 id="about-title">같이 써 보고, 같이 남깁니다</h2>
-        <p class="lede" style="margin-top: 10px">{site.description}</p>
-        <a class="button button-secondary" style="margin-top: 16px" href={withBase('about')}>모임 이야기</a>
+  <section class="section" aria-labelledby="people-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">사람들</p>
+          <h2 id="people-title">이런 사람들이 모입니다</h2>
+        </div>
+        <a href={withBase('about')}>소개 보기</a>
       </div>
-      <dl class="stats">
-        {site.stats.map((stat) => (
-          <div><dt>{stat.label}</dt><dd>{stat.value}</dd></div>
+      <div class="value-grid">
+        {about.people.map((person) => (
+          <article class="value-card">
+            <h3>{person.title}</h3>
+            <p>{person.text}</p>
+          </article>
         ))}
-      </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="practice-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="practice-title">함께 나누는 활동</h2>
+      </div>
+      <div class="value-grid value-grid-3">
+        {about.practices.map((item) => (
+          <article class="value-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -57,7 +134,7 @@ const reviews = (await getReviews()).slice(0, 2);
       <div class="section-head">
         <div>
           <p class="eyebrow">강사</p>
-          <h2 id="instructor-title">이번 시안의 강사</h2>
+          <h2 id="instructor-title">주제를 펼치는 사람</h2>
         </div>
         <a href={withBase('instructors')}>강사 소개</a>
       </div>
@@ -67,80 +144,60 @@ const reviews = (await getReviews()).slice(0, 2);
     </div>
   </section>
 
-  <section class="section" aria-labelledby="partner-title">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">파트너</p>
-          <h2 id="partner-title">제품 소개</h2>
-        </div>
-        <a href={withBase('partners')}>파트너 모두 보기</a>
-      </div>
-      <div class="partner-grid">
-        {partners.map((partner) => <PartnerCard {...partner.data} />)}
-      </div>
-    </div>
-  </section>
-
   <section class="section" aria-labelledby="post-title">
     <div class="wrap">
       <div class="section-head">
         <div>
           <p class="eyebrow">자료</p>
-          <h2 id="post-title">강의 자료·블로그</h2>
+          <h2 id="post-title">최근 자료</h2>
         </div>
         <a href={withBase('blog')}>자료 모두 보기</a>
       </div>
-      <div class="post-grid">
+      <ul class="post-list">
         {posts.map((post) => (
-          <a class="post-card" href={withBase(`blog/${post.id}`)}>
-            <div class="meta">
-              <ExampleBadge show={post.data.example} />
-              <span class="pill pill-quiet">{formatPostDate(post.data.date)}</span>
-            </div>
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-          </a>
+          <li>
+            <a href={withBase(`blog/${post.id}`)}>
+              <time datetime={post.data.date.toISOString().slice(0, 10)}>{formatPostDate(post.data.date)}</time>
+              <strong>{post.data.title}</strong>
+              <span>{post.data.description}</span>
+              {post.data.example && <em>예시</em>}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="gallery-title">
+  <section class="section" aria-labelledby="partner-title">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow">활동</p>
-          <h2 id="gallery-title">지난 활동과 후기</h2>
+          <p class="eyebrow">파트너</p>
+          <h2 id="partner-title">함께 소개하는 이름</h2>
         </div>
-        <a href={withBase('gallery')}>사진·후기</a>
+        <a href={withBase('partners')}>제품 소개</a>
       </div>
-      <div class="gallery-grid">
-        {photos.map((photo) => (
-          <figure class="gallery-card">
-            <img src={withBase(photo.data.image)} alt="" width="640" height="400" />
-            <figcaption>
-              <strong>{photo.data.title}</strong>
-              <span>{formatDate(photo.data.date)}</span>
-            </figcaption>
-          </figure>
+      <ul class="logo-row">
+        {partners.map((partner) => (
+          <li>
+            <strong>{partner.data.company}</strong>
+            <span>{partner.data.product}{partner.data.example ? ' · 예시' : ''}</span>
+          </li>
         ))}
-      </div>
-      <div class="card-grid" style="margin-top: 14px">
-        {reviews.map((review) => (
-          <article class="review-card">
-            <ExampleBadge show={review.data.example} />
-            <blockquote>{review.data.quote}</blockquote>
-            <footer>{review.data.author} · {review.data.event}</footer>
-          </article>
-        ))}
-      </div>
+      </ul>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <BrokerNote />
+  <section class="join-band" aria-labelledby="join-title">
+    <div class="wrap join-band-inner">
+      <div>
+        <h2 id="join-title">자리에 함께하고 싶다면</h2>
+        <p>참가 신청은 한 곳에서 받습니다. 강의·제휴 문의도 AI 숲으로 보내 주세요.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button button-primary" href={withBase('join')}>참가 신청</a>
+        <a class="text-link" href={withBase('contact')}>문의하기</a>
+      </div>
     </div>
   </section>
 </Base>

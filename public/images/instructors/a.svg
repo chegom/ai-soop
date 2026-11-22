@@ -1,9 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144">
-  <rect width="144" height="144" rx="36" fill="#e7f6d8"/>
-  <circle cx="72" cy="78" r="36" fill="#f6ead8"/>
-  <path d="M40 70c4-28 24-40 32-40s28 12 32 40" fill="#2f6a4e"/>
-  <circle cx="60" cy="80" r="3" fill="#233c34"/>
-  <circle cx="84" cy="80" r="3" fill="#233c34"/>
-  <path d="M64 92q8 6 16 0" fill="none" stroke="#233c34" stroke-width="3" stroke-linecap="round"/>
-  <text x="72" y="28" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#21654b" font-weight="700">예시</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#efe4d6"/>
+  <ellipse cx="80" cy="168" rx="62" ry="48" fill="#d9cbb8"/>
+  <circle cx="80" cy="70" r="28" fill="#e8d2c0"/>
+  <path d="M42 74c8-36 22-50 38-50s30 14 38 50c-10 8-24 14-38 14s-28-6-38-14z" fill="#3d342c"/>
+  <text x="80" y="24" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="13" fill="#8a7562">예시</text>
 </svg>
