@@ -1,0 +1,24 @@
+# 지난 모임 사진
+# image 는 public/ 기준 경로입니다. 가까운 장면 파일을 추가하면 홈과 활동 페이지에 늘어납니다.
+# 사람 얼굴이 나오는 사진은 초상 동의를 받은 것만 올리세요.
+
+- id: sample-photo-table
+  example: true
+  title: 예시 · 테이블 위의 노트
+  date: 2026-09-12
+  image: images/gallery/table.svg
+  caption: 실제 사진으로 바꿀 자리입니다. 두세 명이 한 주의 일을 적어 둔 가까운 장면입니다.
+
+- id: sample-photo-cups
+  example: true
+  title: 예시 · 창가의 잔
+  date: 2026-10-18
+  image: images/gallery/cups.svg
+  caption: 실제 사진으로 바꿀 자리입니다. 짧은 대화가 끝난 뒤의 테이블입니다.
+
+- id: sample-photo-desk
+  example: true
+  title: 예시 · 한 장으로 남긴 요약
+  date: 2026-11-08
+  image: images/gallery/desk.svg
+  caption: 실제 사진으로 바꿀 자리입니다. 강의 뒤에 같이 적어 둔 노트북과 종이입니다.

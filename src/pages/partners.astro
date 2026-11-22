@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import PartnerCard from '../components/PartnerCard.astro';
+import BrokerNote from '../components/BrokerNote.astro';
+import { getPartners } from '../lib/content';
+
+const partners = await getPartners();
+---
+
+<Base title="파트너 제품" description="AI 숲이 소개하는 파트너 제품입니다. 제품 소개 문의는 AI 숲으로 보내 주세요.">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">파트너</p>
+      <h1>함께 소개하는 제품</h1>
+      <p class="lede">카드에는 회사와 제품 이야기만 있습니다. 담당자 연락처나 제품 문의 버튼은 두지 않습니다. 소개를 올리고 싶다면 제품 소개 문의로 AI 숲에 보내 주세요.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <ul class="logo-row">
+        {partners.map((partner) => (
+          <li>
+            <strong>{partner.data.company}</strong>
+            <span>{partner.data.product}{partner.data.example ? ' · 예시' : ''}</span>
+          </li>
+        ))}
+      </ul>
+      <BrokerNote />
+      <div class="partner-grid" style="margin-top: 28px">
+        {partners.map((partner) => <PartnerCard {...partner.data} />)}
+      </div>
+    </div>
+  </section>
+</Base>

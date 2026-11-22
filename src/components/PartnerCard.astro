@@ -1,0 +1,22 @@
+---
+import ExampleBadge from './ExampleBadge.astro';
+
+interface Props {
+  company: string;
+  product: string;
+  summary: string;
+  points: string[];
+  example: boolean;
+}
+const partner = Astro.props;
+---
+
+<article class="partner-card">
+  <div class="meta"><ExampleBadge show={partner.example} /></div>
+  <p class="company">{partner.company}</p>
+  <h3>{partner.product}</h3>
+  <p>{partner.summary}</p>
+  <ul class="points">
+    {partner.points.map((point) => <li>{point}</li>)}
+  </ul>
+</article>

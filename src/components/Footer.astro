@@ -1,0 +1,42 @@
+---
+import { isPlaceholder, withBase } from '../lib/url';
+import { getSite } from '../lib/content';
+
+const site = await getSite();
+const explore = [
+  { href: 'about', label: '소개' },
+  { href: 'meetups', label: '모임' },
+  { href: 'lectures', label: '강의' },
+  { href: 'gallery', label: '활동' },
+  { href: 'blog', label: '자료' },
+  { href: 'partners', label: '파트너' },
+  { href: 'schedule', label: '전체 일정' },
+  { href: 'contact', label: '강의·제휴 문의' },
+];
+---
+
+<footer class="site-footer">
+  <div>
+    <p class="eyebrow">AI 숲</p>
+    <h2>강의·제휴 문의는 AI 숲으로</h2>
+    <p>강사와 파트너에게 직접 연락하지 않습니다. 운영자가 문의를 받아 연결합니다.</p>
+    <a href={withBase('contact')}>문의하기</a>
+  </div>
+  <div>
+    <strong>둘러보기</strong>
+    {explore.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+  </div>
+  <div>
+    <strong>커뮤니티</strong>
+    {site.community.map((link) => (
+      <a href={link.href} target="_blank" rel="noopener noreferrer">
+        {link.name}{isPlaceholder(link.href) ? ' (예시 주소)' : ''}
+      </a>
+    ))}
+    <a href={withBase('join')}>참가 신청</a>
+  </div>
+  <div class="footer-bottom">
+    <span>AI 숲 시안</span>
+    <span>서로 다른 사람들이 함께 자라는 모임</span>
+  </div>
+</footer>

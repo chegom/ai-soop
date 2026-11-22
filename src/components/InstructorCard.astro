@@ -1,0 +1,27 @@
+---
+import ExampleBadge from './ExampleBadge.astro';
+import { withBase } from '../lib/url';
+
+interface Props {
+  name: string;
+  photo: string;
+  topics: string[];
+  highlights: string[];
+  example: boolean;
+}
+const person = Astro.props;
+---
+
+<article class="person-card">
+  <div class="meta"><ExampleBadge show={person.example} /></div>
+  <div class="person-top">
+    <img src={withBase(person.photo)} alt="" width="72" height="72" />
+    <h3>{person.name}</h3>
+  </div>
+  <div class="topics">
+    {person.topics.map((topic) => <span class="pill">{topic}</span>)}
+  </div>
+  <ul class="points">
+    {person.highlights.map((item) => <li>{item}</li>)}
+  </ul>
+</article>

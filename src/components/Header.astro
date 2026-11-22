@@ -1,0 +1,52 @@
+---
+import { withBase } from '../lib/url';
+
+const items = [
+  { href: 'about', label: '소개' },
+  { href: 'meetups', label: '모임' },
+  { href: 'lectures', label: '강의' },
+  { href: 'gallery', label: '활동' },
+  { href: 'blog', label: '자료' },
+  { href: 'partners', label: '파트너' },
+];
+
+function normalize(path: string) {
+  if (path.length > 1 && path.endsWith('/')) return path.slice(0, -1);
+  return path || '/';
+}
+
+const current = normalize(Astro.url.pathname);
+const home = normalize(withBase(''));
+
+function currentAttr(href: string) {
+  const target = normalize(withBase(href));
+  const on = current === target || current.startsWith(`${target}/`);
+  return on ? 'page' : undefined;
+}
+---
+
+<div class="header-bar">
+  <header class="site-header">
+    <a class="brand" href={withBase('')} aria-current={current === home ? 'page' : undefined}>
+      <img src={withBase('favicon.svg')} alt="" width="28" height="28" />
+      AI 숲
+    </a>
+    <nav class="desktop-nav" aria-label="주요 메뉴">
+      {items.map((item) => (
+        <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
+      ))}
+      <a class="button button-secondary header-join" href={withBase('join')}>참가 신청</a>
+      <a class="button button-primary header-inquiry" href={withBase('contact')}>강의·제휴 문의</a>
+    </nav>
+    <details class="mobile-nav">
+      <summary>메뉴</summary>
+      <div class="mobile-nav-panel" role="navigation" aria-label="모바일 메뉴">
+        {items.map((item) => (
+          <a href={withBase(item.href)} aria-current={currentAttr(item.href)}>{item.label}</a>
+        ))}
+        <a href={withBase('join')}>참가 신청</a>
+        <a href={withBase('contact')}>강의·제휴 문의</a>
+      </div>
+    </details>
+  </header>
+</div>

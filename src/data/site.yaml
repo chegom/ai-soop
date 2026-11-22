@@ -1,0 +1,42 @@
+# AI 숲 사이트 공통 설정
+# 참가 신청·문의·커뮤니티 주소는 여기만 고칩니다.
+# 강사/파트너 파일에는 메일, 전화, 개인 SNS를 넣지 마세요.
+
+name: AI 숲
+description: 서로 다른 분야의 사람들이 온라인과 오프라인에서 만나 AI를 일과 창작에 연결하는 모임입니다.
+showDraftBanner: true
+draftBanner: 시안입니다. 일정, 강사, 파트너, 후기, 신청·문의 주소는 예시이니 운영 전에 바꾸세요.
+
+# 참가 신청은 무료 외부 폼으로 연결합니다. 실제 Google Forms 주소로 바꾸세요.
+joinFormUrl: https://docs.google.com/forms/d/PLACEHOLDER_AI_SOOP_JOIN/viewform
+# 강의 의뢰, 제휴, 제품 소개, 강사 등록은 이 주소 하나로만 받습니다.
+inquiryFormUrl: https://docs.google.com/forms/d/PLACEHOLDER_AI_SOOP_INQUIRY/viewform
+inquiryEmail: inquiry@example.com
+inquiryNote: 예시 주소입니다. 운영자의 실제 폼과 메일로 바꾸세요. 문의는 AI 숲만 받고, 강사에게 직접 연결하지 않습니다.
+
+inquiryTypes:
+  - title: 강의 의뢰
+    description: 모임, 회사, 학교에서 강의를 요청할 때
+  - title: 제휴
+    description: 공간, 브랜드, 프로그램을 함께 만들 때
+  - title: 제품 소개
+    description: 파트너 제품이나 서비스를 숲에 소개하고 싶을 때
+  - title: 강사 등록
+    description: 강사로 함께하고 싶을 때
+
+community:
+  - name: 카카오톡 오픈채팅
+    href: https://example.com/placeholder-ai-soop-kakao
+    note: 예시 주소
+  - name: 인스타그램
+    href: https://example.com/placeholder-ai-soop-instagram
+    note: 예시 주소
+
+# 숫자는 운영자가 확인한 값만 적으세요. 아래는 기존 소개에 공개된 규모입니다.
+stats:
+  - label: 함께하는 사람
+    value: 약 130명
+  - label: 오프라인 거점
+    value: 서울 2곳
+  - label: 만나는 방법
+    value: 온라인 · 오프라인

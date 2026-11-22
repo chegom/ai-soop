@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#f3ece3"/>
+  <ellipse cx="80" cy="168" rx="62" ry="48" fill="#e0d4c4"/>
+  <circle cx="80" cy="74" r="26" fill="#e6cbb8"/>
+  <path d="M48 70c4-24 16-40 32-40s28 16 32 40c2 10-8 28-32 30S46 84 48 70z" fill="#2f2a28"/>
+  <text x="80" y="24" text-anchor="middle" font-family="Pretendard, sans-serif" font-size="13" fill="#8d7b68">예시</text>
+</svg>

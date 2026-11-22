@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+---
+
+<Base title="페이지를 찾지 못했습니다">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">404</p>
+      <h1>이 길은 아직 숲에 없습니다</h1>
+      <p class="lede">주소가 바뀌었거나, 아직 없는 페이지입니다.</p>
+      <a class="button button-primary" style="margin-top: 16px" href={withBase('')}>홈으로</a>
+    </div>
+  </section>
+</Base>

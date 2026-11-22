@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import ExampleBadge from '../../components/ExampleBadge.astro';
+import { withBase } from '../../lib/url';
+import { formatPostDate } from '../../lib/format';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={post.data.title} description={post.data.description}>
+  <article class="page-intro">
+    <div class="wrap prose">
+      <p><a href={withBase('blog')}>자료 목록</a></p>
+      <div class="meta" style="margin-top: 12px">
+        <ExampleBadge show={post.data.example} />
+        <span class="pill pill-quiet">{formatPostDate(post.data.date)}</span>
+        {post.data.tags.map((tag) => <span class="pill">{tag}</span>)}
+      </div>
+      <h1 style="margin-top: 10px">{post.data.title}</h1>
+      <div style="margin-top: 18px">
+        <Content />
+      </div>
+      <p>자료나 강의에 대한 질문은 <a href={withBase('contact')}>AI 숲 문의</a>로 보내 주세요.</p>
+    </div>
+  </article>
+</Base>

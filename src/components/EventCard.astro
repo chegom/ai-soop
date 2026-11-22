@@ -1,0 +1,30 @@
+---
+import ExampleBadge from './ExampleBadge.astro';
+import { formatDate, statusLabel } from '../lib/format';
+
+interface Props {
+  title: string;
+  kind: string;
+  date: string;
+  time: string;
+  place: string;
+  mode: string;
+  status: 'upcoming' | 'past';
+  summary: string;
+  example: boolean;
+}
+const event = Astro.props;
+---
+
+<article class="event-card">
+  <div class="meta">
+    <ExampleBadge show={event.example} />
+    <span class="pill">{event.kind}</span>
+    <span class="pill pill-quiet">{statusLabel(event.status)}</span>
+    <span class="pill pill-quiet">{event.mode}</span>
+  </div>
+  <p class="event-when">{formatDate(event.date)} · {event.time}</p>
+  <h3>{event.title}</h3>
+  <p>{event.place}</p>
+  <p>{event.summary}</p>
+</article>

@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import EventCard from '../components/EventCard.astro';
+import { isPlaceholder, withBase } from '../lib/url';
+import { getEvents, getSite } from '../lib/content';
+
+const site = await getSite();
+const { upcoming } = await getEvents();
+const placeholder = isPlaceholder(site.joinFormUrl);
+---
+
+<Base title="참가 신청" description="AI 숲 모임과 강의 참가 신청은 외부 폼에서 받습니다.">
+  <section class="page-intro">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">참가 신청</p>
+        <h1>자리에 함께하고 싶다면</h1>
+        <p class="lede">참가 신청은 무료로 쓸 수 있는 외부 폼으로 받습니다. 이 사이트는 신청서를 저장하지 않습니다.</p>
+        {placeholder && (
+          <div class="placeholder-callout" style="margin-top: 16px" role="note">
+            <strong>예시 주소</strong>
+            <p>아래 버튼은 아직 연결되지 않은 자리표시자입니다. 운영자가 <code>src/data/site.yaml</code>의 <code>joinFormUrl</code>을 실제 Google Forms 주소로 바꾸면 이 버튼이 그 폼으로 열립니다.</p>
+          </div>
+        )}
+        <div class="contact-actions">
+          <a class="button button-primary" href={site.joinFormUrl} target="_blank" rel="noopener noreferrer">참가 신청 폼 열기</a>
+          <a class="button button-secondary" href={withBase('schedule')}>일정 먼저 보기</a>
+        </div>
+        <p class="lede" style="margin-top: 14px">강의 의뢰, 제휴, 제품 소개, 강사 등록은 참가 신청과 다른 창구입니다. <a href={withBase('contact')}>문의 페이지</a>로 보내 주세요.</p>
+      </div>
+      <div class="stack">
+        {upcoming.slice(0, 2).map((event) => <EventCard {...event.data} />)}
+      </div>
+    </div>
+  </section>
+</Base>

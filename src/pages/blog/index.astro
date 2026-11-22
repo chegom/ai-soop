@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import ExampleBadge from '../../components/ExampleBadge.astro';
+import { withBase } from '../../lib/url';
+import { formatPostDate } from '../../lib/format';
+import { getPosts } from '../../lib/content';
+
+const posts = await getPosts();
+---
+
+<Base title="강의 자료·블로그" description="AI 숲 강의 노트와 모임 기록입니다.">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow">자료</p>
+      <h1>강의 자료·블로그</h1>
+      <p class="lede">글은 <code>src/content/posts/</code>의 마크다운 파일입니다. 파일을 하나 추가하면 이 목록에 나타납니다. 강사 개인 연락처는 적지 않습니다.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap post-grid">
+      {posts.map((post) => (
+        <a class="post-card" href={withBase(`blog/${post.id}`)}>
+          <div class="meta">
+            <ExampleBadge show={post.data.example} />
+            {post.data.tags.map((tag) => <span class="pill pill-quiet">{tag}</span>)}
+          </div>
+          <h3>{post.data.title}</h3>
+          <p>{formatPostDate(post.data.date)}</p>
+          <p>{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

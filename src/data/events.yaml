@@ -1,0 +1,58 @@
+# 모임·강의 일정
+# 항목을 복사해 추가하세요. status 는 upcoming(예정) 또는 past(종료) 입니다.
+# 사람 이름 대신 주제가 보이게 적고, 연락처는 넣지 마세요.
+
+- id: sample-guro-flow
+  example: true
+  title: 예시 · 반복 업무를 한 장으로 줄여 보기
+  kind: 모임
+  date: 2026-12-06
+  time: 14:00–16:30
+  place: 서울 구로 (예시 장소)
+  mode: 오프라인
+  status: upcoming
+  summary: 이번 주에 반복한 일 하나를 고르고, 사람 손과 도구에 맡길 구간을 나눠 봅니다.
+
+- id: sample-online-lecture
+  example: true
+  title: 예시 · 강의, 결과를 검토하는 프롬프트
+  kind: 강의
+  date: 2026-12-13
+  time: 20:00–21:30
+  place: 온라인 (예시 링크는 신청 후 안내)
+  mode: 온라인
+  status: upcoming
+  summary: 초안을 받는 데서 끝내지 않고, 빠뜨린 조건과 확인할 문장을 고르는 시간을 갖습니다.
+
+- id: sample-hongdae-create
+  example: true
+  title: 예시 · 짧은 기획을 세 가지 형태로
+  kind: 모임
+  date: 2026-12-20
+  time: 15:00–17:30
+  place: 서울 홍대 (예시 장소)
+  mode: 오프라인
+  status: upcoming
+  summary: 같은 아이디어를 글, 화면, 말로 바꿔 보며 어디서 뜻이 달라지는지 비교합니다.
+
+- id: sample-past-meetup
+  example: true
+  title: 예시 · 처음 온 사람을 위한 도구 지도
+  kind: 모임
+  date: 2026-09-12
+  time: 14:00–16:30
+  place: 서울 구로 (예시 장소)
+  mode: 오프라인
+  status: past
+  summary: 자주 쓰는 도구를 직업별로 나누고, 다음에 직접 써 볼 것 하나씩만 골랐습니다.
+
+- id: sample-past-lecture
+  example: true
+  title: 예시 · 강의, 자료를 다시 읽을 수 있게 정리하기
+  kind: 강의
+  date: 2026-10-18
+  time: 20:00–21:30
+  place: 온라인 (예시)
+  mode: 온라인
+  status: past
+  summary: 강의가 끝난 뒤에도 따라 할 수 있도록 예시, 막힌 지점, 다음 시도를 한 장에 남겼습니다.

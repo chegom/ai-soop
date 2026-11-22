@@ -1,0 +1,50 @@
+---
+import { withBase } from '../lib/url';
+import { getSite } from '../lib/content';
+import '../styles/forest.css';
+
+const site = await getSite();
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="tree-stage" data-tree-stage>
+    <img class="tree-still" src={withBase('images/hero-tree.png')} alt="" width="1440" height="800" />
+    <canvas
+      class="tree-canvas"
+      data-tree-canvas
+      data-model={withBase('models/european-beech.glb')}
+      data-basis={withBase('basis/')}
+      hidden
+    ></canvas>
+  </div>
+  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="wrap hero-copy">
+    <p class="eyebrow">온·오프라인 AI 모임</p>
+    <h1 id="hero-title">서로 다른 사람들이<br />함께 자라는 숲</h1>
+    <p class="lede">{site.description}</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#next">다음 모임 보기</a>
+      <a class="button button-secondary" href={withBase('join')}>참가 신청</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const stage = document.querySelector('[data-tree-stage]');
+  const canvas = document.querySelector('[data-tree-canvas]');
+  if (stage && canvas instanceof HTMLCanvasElement) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const small = window.matchMedia('(max-width: 760px)').matches;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+    const lowPower = Boolean(connection?.saveData) || (typeof memory === 'number' && memory > 0 && memory <= 2);
+    if (!reduced && !small && !lowPower) {
+      const start = () => {
+        import('../scripts/tree-scene').then(({ startTree }) => startTree(canvas, stage));
+      };
+      const idle = window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => void };
+      if (idle.requestIdleCallback) idle.requestIdleCallback(start, { timeout: 1200 });
+      else window.setTimeout(start, 160);
+    }
+  }
+</script>
